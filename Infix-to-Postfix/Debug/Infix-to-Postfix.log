@@ -1,0 +1,18 @@
+﻿Build started 11/11/2015 1:53:42 PM.
+     1>Project "C:\Users\Zachary\Desktop\Infix-to-Postfix\Infix-to-Postfix.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt LinkedList.cpp Main.cpp Node.cpp
+         Node.cpp
+         Main.cpp
+         LinkedList.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Zachary\Desktop\Debug\Infix-to-Postfix_HL_ZP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Zachary\Desktop\Debug\Infix-to-Postfix_HL_ZP.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Zachary\Desktop\Debug\Infix-to-Postfix_HL_ZP.lib" /MACHINE:X86 Debug\LinkedList.obj
+         Debug\Main.obj
+         Debug\Node.obj
+         Infix-to-Postfix.vcxproj -> C:\Users\Zachary\Desktop\Debug\Infix-to-Postfix_HL_ZP.exe
+     1>Done Building Project "C:\Users\Zachary\Desktop\Infix-to-Postfix\Infix-to-Postfix.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.42
