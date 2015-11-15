@@ -1,20 +1,18 @@
-﻿Build started 11/12/2015 7:24:56 PM.
-     1>Project "C:\Users\Zachary\Desktop\GIT\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 11/15/2015 1:15:57 PM.
+     1>Project "C:\Users\zachary\Desktop\GIT\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt LinkedList.cpp Main.cpp Node.cpp Users.cpp
-         Users.cpp
-         Node.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-         LinkedList.cpp
-         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.lib" /MACHINE:X86 Debug\LinkedList.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.lib" /MACHINE:X86 Debug\Hash.obj
+         Debug\HashMap.obj
+         Debug\LinkedList.obj
          Debug\Main.obj
          Debug\Node.obj
          Debug\Users.obj
-         Infix-to-Postfix.vcxproj -> C:\Users\Zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.exe
-     1>Done Building Project "C:\Users\Zachary\Desktop\GIT\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" (Rebuild target(s)).
+         Infix-to-Postfix.vcxproj -> C:\Users\zachary\Desktop\GIT\PumpkinPie\Debug\PumpkinPie.exe
+     1>Done Building Project "C:\Users\zachary\Desktop\GIT\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.03
+Time Elapsed 00:00:01.93
