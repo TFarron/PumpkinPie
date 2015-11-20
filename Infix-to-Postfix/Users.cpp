@@ -1,10 +1,8 @@
 #include "Users.h"
 #include <cstddef>
-#include <iomanip>
+#include <iostream>
 
 using namespace std;
-
-int User::n=0;//set counter to 0
 
 User :: User()
 {
@@ -12,6 +10,8 @@ User :: User()
 
 User :: User(string user, string pass, string email, string name, char pref, char new_sex, int new_age)
 {
+	//this->test.content  = user;
+	n++;
 	username = user;
 	password = pass;
 	email_addr = email;
@@ -19,16 +19,18 @@ User :: User(string user, string pass, string email, string name, char pref, cha
 	preference = pref;
 	sex = new_sex;
 	age = new_age;
-	if (age<18)
-		minor = true;
-	else
-		minor = false;
-	User::n++;
+	minor = (age < 18 ? true:false);
 };
+/*
+ostream& operator<< (ostream &out, const User &user)
+{
+	string tab = "\t";
+	cout << user.username << "\t" << user.password << "\t" << user.real_name << "\t" << user.preference << "\t" << user.sex << "\t" << user.age << "\t" << user.minor << "****"<< endl;
+	//cout << user.username << "**" << user.password << "**" << user.real_name << "**" << user.preference << "**" << user.sex << "**" << user.age << "**" << user.minor << "****"<< endl;
 
-
-
-
+	return out;
+};
+*/
 ostream& operator<< (ostream &out, const User &user)
 {
 
@@ -58,5 +60,4 @@ public:
 
 	//out << "| " << setw(12) << user.password << " | " << setw(11) << user.email_addr << " | " << setw(13) << user.age << " | " << setw(12) << user.real_name << " |";
     return out;
-}
-
+};

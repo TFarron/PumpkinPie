@@ -25,6 +25,11 @@ HashMap::HashMap()
 	}
 }
 
+LinkedHashEntry** HashMap::getTable()
+{
+	return table;
+}
+
 int HashMap::find(string key)
 {
 	int hash = Hash(key);

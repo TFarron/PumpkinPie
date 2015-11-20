@@ -14,8 +14,8 @@ LinkedList<ItemType> ::LinkedList() : headPtr(nullptr), itemCount(0), tailPtr(nu
 template<class ItemType>
 LinkedList<ItemType>::LinkedList(const LinkedList<ItemType>& aList)
 {
-    itemCount = aList->itemCount;
-    Node<ItemType>* origChainPtr = aList->headPtr;
+    itemCount = aList.itemCount;
+    Node<ItemType>* origChainPtr = aList.headPtr;
 
     if (origChainPtr == nullptr)
         headPtr = nullptr;
@@ -272,3 +272,21 @@ vector<ItemType> LinkedList<ItemType>::toVector() const
     }
     return listContents;
 }
+
+template<class ItemType>
+void LinkedList<ItemType>::printList()
+{
+    if (itemCount == 0)
+    {
+        return; 
+    }
+    Node<ItemType>* nodePtr = posToNode(0);
+    cout << nodePtr->getItem() << endl;
+    for (int i = 1; i < itemCount; i++)
+    {
+        nodePtr = nodePtr->getNext();
+        cout << nodePtr->getItem() << endl;
+        
+    }
+}
+

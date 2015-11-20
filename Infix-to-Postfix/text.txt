@@ -1,0 +1,10 @@
+rWeasley	password1	@gmail.com	Ron Weasley	F	F	10	
+lVoldemort	password2	@yahoo.com	Lord Voldemort	M	M	20
+profDumbledore	password3	@yahoo.com	Dumbledore	F	M	30
+profSnape	password4	@yahoo.com	Snape Snape	M	M	40
+gWeasley	password5	@yahoo.com	Ginni Weasley	F	F	50
+nLongbuttom	password6	@yahoo.com	Navel Longbu	M	M	60
+lLovegood	password7	@yahoo.com	Luna Lovegood	F	F	70
+bLestrange	password8	@yahoo.com	bellatrix 	M	M	80
+gGrindlewald	password9	@yahoo.com	Grindlwald	F	M	90
+profMcGonagall	password0	@yahoo.com	McGonagall	M	M	100

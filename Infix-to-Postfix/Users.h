@@ -12,15 +12,24 @@ private:
 	char preference,sex;
 	//'M' for male, 'F' for female, 'O' for other
 	int age;
-public:
-
-	static int n; //counter for the amount of users in server 
-
-	friend ostream& operator<< (ostream &out, const User &user);//redefining stream operator 
-
-	string username;
 	bool minor;
 	//Used for tracking whether users are a minor or not
+public:
+	friend ostream& operator << (ostream &out, const User &user);
+
+	int n; //counter for the amount of users in server 
+
+	//friend ostream& operator<< (ostream &out, const User &user);//redefining stream operator 
+	struct test
+	{
+		string content;
+		int upperLimit;
+		int lowerLimit;
+	};
+	int userID;
+	string username;
+	//A unique five digit number assigned to each person when they sign up
+	//Ex: John is the first to sign up. His ID is 00000. Sarah is next. Hers is 00001. Etc.
 
 	User();
 	User(string user, string pass, string email, string name, char pref, char new_sex, int new_age);
@@ -34,6 +43,13 @@ public:
 	void set_pref(char pref) {preference=pref;};
 	void set_sex(char new_sex) {sex = new_sex;};
 	void set_age(int new_age) {age = new_age;};
-
+	
+	string get_user() {return username;};
+	string get_pass() {return password;};
+	string get_email() {return email_addr;};
+	string get_name() {return real_name;};
+	char get_pref() {return preference;};
+	char get_sex() {return sex;};
+	int get_age() {return age;}
 };
 #endif

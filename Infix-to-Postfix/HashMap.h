@@ -19,6 +19,8 @@ public:
 	HashMap();
 	~HashMap();
 
+	LinkedHashEntry** getTable();
+	//LinkedHashEntry **getTable(return table);
 	int Hash(string key);
 	int find(string key);
 	User retrieve(string key);
