@@ -1,6 +1,7 @@
 #include"HashMap.h"
 #include<string>
 #include<cstddef>
+#include<algorithm>
 
 int HashMap :: Hash(string key)
 {
@@ -75,6 +76,16 @@ void HashMap::sorted_list()
 			entry = entry->getNext();
 		}
 	}
+
+	struct sorting_method
+	{
+		inline bool operator() ( User& object1, User& object2)
+		{
+			return (object1.get_user()<object2.get_user());
+		}
+	};
+
+	sort(list_to_sort.begin(), list_to_sort.end(), sorting_method());
 
 	for (int i=0; i<list_to_sort.size();i++)
 	{
