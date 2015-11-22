@@ -1,18 +1,29 @@
-﻿Build started 11/19/2015 12:56:11 PM.
-     1>Project "C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Infix-to-Postfix\Infix-to-Postfix.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/22/2015 1:54:40 PM.
+     1>Project "C:\Users\zachary\Desktop\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" on node 2 (Build target(s)).
        Project file contains ToolsVersion="12.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt HashMap.cpp LinkedList.cpp Main.cpp Node.cpp Users.cpp
+         Users.cpp
+         Node.cpp
          Main.cpp
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\main.cpp(38): warning C4129: ';' : unrecognized character escape sequence
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\main.cpp(42): warning C4129: ',' : unrecognized character escape sequence
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\main.cpp(114): warning C4101: 'e' : unreferenced local variable
+         LinkedList.cpp
+         HashMap.cpp
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\hashmap.cpp(10): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\hashmap.cpp(79): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+     1>c:\users\zachary\desktop\pumpkinpie\infix-to-postfix\main.cpp(288): warning C4715: 'promptAdminOption' : not all control paths return a value
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Debug\PumpkinPie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Debug\PumpkinPie.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Debug\PumpkinPie.lib" /MACHINE:X86 Debug\HashMap.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\zachary\Desktop\PumpkinPie\Debug\PumpkinPie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\zachary\Desktop\PumpkinPie\Debug\PumpkinPie.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\zachary\Desktop\PumpkinPie\Debug\PumpkinPie.lib" /MACHINE:X86 Debug\HashMap.obj
          Debug\LinkedList.obj
          Debug\Main.obj
          Debug\Node.obj
          Debug\Users.obj
-         Infix-to-Postfix.vcxproj -> C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Debug\PumpkinPie.exe
-     1>Done Building Project "C:\Users\hsilin\Desktop\C++ Final Project\PumpkinPie-master (2)\PumpkinPie-master\PumpkinPie-master\Infix-to-Postfix\Infix-to-Postfix.vcxproj" (Build target(s)).
+         Infix-to-Postfix.vcxproj -> C:\Users\zachary\Desktop\PumpkinPie\Debug\PumpkinPie.exe
+     1>Done Building Project "C:\Users\zachary\Desktop\PumpkinPie\Infix-to-Postfix\Infix-to-Postfix.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.26
+Time Elapsed 00:00:03.96

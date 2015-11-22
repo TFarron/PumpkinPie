@@ -49,6 +49,40 @@ int HashMap::find(string key)
 	}
 }
 
+void HashMap::list()
+{
+	for(int i=0; i<TABLE_SIZE;i++)
+	{
+		LinkedHashEntry *entry = table[i];
+		while (entry != NULL)
+		{
+			cout << entry->getValue() << endl;
+			system("pause");
+			entry = entry->getNext();
+		}
+	}
+}
+
+void HashMap::sorted_list()
+{
+	vector<User> list_to_sort;
+	for (int i=0; i<TABLE_SIZE;i++)
+	{
+		LinkedHashEntry *entry = table[i];
+		while (entry != NULL)
+		{
+			list_to_sort.push_back(entry->getValue());
+			entry = entry->getNext();
+		}
+	}
+
+	for (int i=0; i<list_to_sort.size();i++)
+	{
+		cout << endl << list_to_sort[i] << endl;
+		system("pause");
+	}
+}
+
 User HashMap::retrieve(string key)
 {
 	string exception_string = "Error: File not found.\n";

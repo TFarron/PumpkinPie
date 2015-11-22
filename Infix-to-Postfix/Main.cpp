@@ -7,28 +7,124 @@
 #include "Users.h"
 #include <iostream>
 #include <string>
-#include<fstream>
+#include <fstream>
 #include <vector>
 
 //User(string user, string pass, string email, string name, char pref, char new_sex, int new_age)
 
-void readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable);
-//void writeToFile(LinkedList<User>* list, HashMap* myTable);
-void promptAdminOption(HashMap* myTable);
-void writeToFileFromHash(HashMap* myTable);
+bool readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable);
+bool promptAdminOption(HashMap* myTable);
+void promptUserOption(HashMap* myTable);
+void writeToFileFromHash(HashMap* myTable, string savepath);
+
 int main()
 {
+	string filepath,pword,login;
+	char option;
+	bool cont;
 	HashMap *myTable = new HashMap();
 	LinkedList<User>* list = new LinkedList<User>();
-	readFromFile("test.csv", list, myTable);
 
-	cout << "Welcome to Command Line Generated Social Networking Site\n";
-	promptAdminOption(myTable);
-	system("Pause");
+	cout << "Welcome to P-kin.io, the up and coming dating service \nfor programming developers,";
+	cout << "where we help you meet that \nspecial someone, before it's too late!\n\n";
+	cout << "	      __.....__\n";
+	cout << "            .'         ':,\n";
+	cout << "          /  __  _  __  \\\n";
+	cout << "           | |_) || |_))||\n";
+	cout << "           | | \\ || |   ||\n";
+	cout << "           |             ||   _,\n";
+	cout << "           |             ||.-(_{}\n";
+	cout << "           |             |/    `\n";
+	cout << "           |        ,_ (\;|/)\n";
+	cout << "         \\|       {}_)-,||`\n";
+	cout << "         \\;/,,;;;;;;;,\\|//,\n";
+	cout << "        .;;;;;;;;;;;;;;;;,\n";
+	cout << "       \,;;;;;;;;;;;;;;;;,//\n";
+	cout << "      \\;;;;;;;;;;;;;;;;,//\n";
+	cout << endl;
+	system("pause"); system("cls");
+	cout << "To start, please enter in the filepath of the database to read from.\n";
+	cout << "By default, the file is stored in the same directory as this program,\n";
+	cout << "and should be titled 'Input'.csv. If you're using a different csv file,\n";
+	cout << "specify the name and or filepath. A listing of your current working\n";
+	cout << "directory has been provided for your convenience.\n\n";
+	system("pause");
+	system("cls");
+	cout << endl;
+	system("dir /w /on");
+
+	cout << "\nFilepath: ";
+	cin >> filepath;
+
+	bool success = readFromFile(filepath, list, myTable);
+
+	if(success==false)
+	{
+		system("cls");
+		cout << "Error: File not found.\nExiting...\n\n";
+		system("pause");
+		goto END;
+	}
+
+MENU:
+
+	system("cls");
+	cout << "Welcome to P-kin.io\n\n";
+	cout << "Login: ";
+	cin >> login;
+	cout << "\nPassword: ";
+	cin >> pword;
+
+	try
+	{
+		User Admin = myTable->retrieve("admin");
+		User end_user = myTable->retrieve(login);
+
+		if(Admin.get_pass()==pword&&Admin.get_user()==login)
+		{
+			cont = promptAdminOption(myTable);
+			system("pause");
+			if(cont==true)
+				goto MENU;
+			else
+			{
+				delete myTable;
+				delete list;
+			}
+		}
+
+		else if(end_user.get_pass()==pword&&end_user.get_user()==login)
+		{
+			promptUserOption(myTable);
+			system("pause");
+			goto MENU;
+		}
+
+		else
+		{
+			cout << "\nPassword incorrect. Try again?\n('Y' for yes; any other key to exit).\n";
+			cin >> option;
+			if (option=='Y'||option=='y')
+				goto MENU;
+			else
+				system("pause");
+		}
+	}
+
+	catch(const logic_error& e)
+	{
+		cout << "\nError: No account by that name exists in the database.\n";
+		cout << "Verify that user exists, first. This error could also occur\n";
+		cout << "if there are no 'admin' accounts loaded into the database.\n";
+		cout << "Further verify that there is at least one 'admin' account \n";
+		cout << "loaded into the database. Now exiting...\n\n";
+		system("pause");
+	}
+END:
 	return 0;
 }
 
-void promptAdminOption(HashMap* myTable)
+bool promptAdminOption(HashMap* myTable)
 {
 	
 	
@@ -44,8 +140,8 @@ void promptAdminOption(HashMap* myTable)
 	cout << "(5) List data in key sequence (sorted)" << endl;
 	cout << "(6) Print indented tree" << endl;
 	cout << "(7) Efficiency" << endl;
-	cout << "(8) TBD" << endl;
-	cout << "(9) Quit" << endl;
+	cout << "(8) Logout" << endl;
+	cout << "(9) Quit, and save data to file" << endl;
 	cout << "(0) Credits" << endl;
 	cout << endl << "Enter in desired option below.\n";
 
@@ -63,7 +159,8 @@ void promptAdminOption(HashMap* myTable)
 		string userName, password, email, name;
 		char pref, sex;
 		int age;
-		cout << "User Information: \n";
+		system("cls");
+		cout << "Enter in user information below. \n\n";
 		cout << "User Name: ";
 		cin >> userName;
 		cout << "Password: ";
@@ -82,6 +179,7 @@ void promptAdminOption(HashMap* myTable)
 
 		//cout << *newUser;
 		myTable->add(*newUser);
+		delete newUser;
 		system("pause");
 		system("CLS");
 
@@ -132,14 +230,16 @@ void promptAdminOption(HashMap* myTable)
 	else if (choice==4)		
 	{				
 		//list data directly from hash
+		myTable->list();
 		system("CLS");
 		system("pause");
 	}			
 	else if (choice==5)
 	{
-		//pull data, sort, and print; more efficient if done by BST 
+		//pull data, sort, and print
 		system("CLS");
-		system("pause");
+		myTable->sorted_list();
+		system("CLS");
 	}
 	else if (choice==6)
 	{
@@ -154,13 +254,28 @@ void promptAdminOption(HashMap* myTable)
 	else if (choice==8)
 	{
 		system("CLS");
-		system("pause");
+		leave_flag = true;
+		return true;
 	}
 	else if (choice==9)
 	{
+		string savepath;
 		leave_flag = true;
-		writeToFileFromHash(myTable);
+		system("cls");
+		cout << "Enter below the filepath of the csv that you would like to save changes\n";
+		cout << "to the database to. A listing of your current working directory has been\n";
+		cout << "provided for your convenience.\n\n";
+		system("pause");
+		system("cls");
+		cout << endl;
+		system("dir /w /on");
+
+		cout << "\nFilepath: ";
+		cin >> savepath;
+		writeToFileFromHash(myTable,savepath);
+
 		system("CLS");
+		return false;
 		//make sure to delete any objects that were dynamically created here
 	}
 	else if (choice==0)
@@ -172,12 +287,47 @@ void promptAdminOption(HashMap* myTable)
 
 }
 
-void readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable)
+void promptUserOption(HashMap* myTable)
+{
+	bool leave_flag=false; // for leaving main menu
+	int choice;
+	system("cls");
+	do{
+	cout << "(1) Inbox" << endl;
+	cout << "(2) View Profile" << endl;
+	cout << "(3) Edit Profile" << endl;
+	cout << "(4) Logout" << endl;
+	cin >> choice;
+	if (choice==1)
+	{
+	}
+	else if(choice==2)
+	{
+	}
+	else if(choice==3)
+	{
+	}
+	else if(choice==4)
+	{
+		leave_flag=true;
+	}
+	else
+	{
+		cout << "Invalid option.\n";
+		cout << "Returning to main menu...\n";
+	}
+	}while(leave_flag==false);
+
+}
+
+bool readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable)
 {
 	std::vector<int> dataRange;
 	//main for pkin.io, a dating site for web developers 
 	ifstream myReadFile;
 	myReadFile.open(fileName);
+	if(!myReadFile)
+		return false;
 	string line;
 	int index = 0;
 	if (myReadFile.is_open()) 
@@ -211,13 +361,14 @@ void readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable)
 		}
 	}
 	myReadFile.close();
+	return true;
 }
 
 
-void writeToFileFromHash(HashMap* myTable)
+void writeToFileFromHash(HashMap* myTable, string savepath)
 {
 	ofstream MyExcelFile;
-	MyExcelFile.open("hashedData.csv");
+	MyExcelFile.open(savepath);
 	LinkedHashEntry **table = myTable->getTable();
 	string dataStr = "";
 	for (int i=0; i<TABLE_SIZE; i++)
@@ -228,7 +379,7 @@ void writeToFileFromHash(HashMap* myTable)
 			while(entry != NULL)
 			{
 				User currUser = entry->getValue();
-				cout << currUser;
+				//cout << currUser;
 				dataStr += currUser.get_user() + ",";
 				dataStr += currUser.get_pass() + ",";
 				dataStr += currUser.get_email() + ",";
@@ -245,81 +396,6 @@ void writeToFileFromHash(HashMap* myTable)
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 void writeToFile(LinkedList<User>* list, HashMap* myTable)

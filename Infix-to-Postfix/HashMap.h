@@ -4,6 +4,7 @@
 #include"Users.h"
 #include"HashEntry.h"
 #include<string>
+#include<vector>
 
 const int TABLE_SIZE = 29;
 
@@ -26,6 +27,8 @@ public:
 	User retrieve(string key);
 	void add(User new_value);
 	void remove(string key);
+	void list();
+	void sorted_list();
 
 };
 #endif
