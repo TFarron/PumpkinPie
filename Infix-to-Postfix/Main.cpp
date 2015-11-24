@@ -14,7 +14,7 @@
 
 bool readFromFile(string fileName, LinkedList<User>* list, HashMap* myTable);
 bool promptAdminOption(HashMap* myTable);
-void promptUserOption(HashMap* myTable);
+void promptUserOption(HashMap* myTable, User& end_user);
 void writeToFileFromHash(HashMap* myTable, string savepath);
 
 int main()
@@ -29,9 +29,9 @@ int main()
 	cout << "where we help you meet that \nspecial someone, before it's too late!\n\n";
 	cout << "	      __.....__\n";
 	cout << "            .'         ':,\n";
-	cout << "          /  __  _  __  \\\n";
-	cout << "           | |_) || |_))||\n";
-	cout << "           | | \\ || |   ||\n";
+	cout << "           /  __  _  __  \\\n";
+	cout << "           | |_) || |_)) ||\n";
+	cout << "           | | \\ || |    ||\n";
 	cout << "           |             ||   _,\n";
 	cout << "           |             ||.-(_{}\n";
 	cout << "           |             |/    `\n";
@@ -95,7 +95,7 @@ MENU:
 
 		else if(end_user.get_pass()==pword&&end_user.get_user()==login)
 		{
-			promptUserOption(myTable);
+			promptUserOption(myTable, end_user);
 			system("pause");
 			goto MENU;
 		}
@@ -132,8 +132,9 @@ bool promptAdminOption(HashMap* myTable)
 	int choice;
 
 	do{
-
-	cout << endl << "(1) Add new data" << endl;
+	system("cls");
+	cout << "*********** Logged in as user: admin ************* " << endl << endl;
+	cout << "(1) Add new data" << endl;
 	cout << "(2) Delete data" << endl;
 	cout << "(3) Find and display one data record using the primary key" << endl;
 	cout << "(4) List data in hash table sequence" << endl;
@@ -163,6 +164,9 @@ bool promptAdminOption(HashMap* myTable)
 		cout << "Enter in user information below. \n\n";
 		cout << "User Name: ";
 		cin >> userName;
+		cout << "Real Name: ";
+		cin.ignore();
+		getline(cin,name);
 		cout << "Password: ";
 		cin >> password;
 		cout << "Email: ";
@@ -253,7 +257,6 @@ bool promptAdminOption(HashMap* myTable)
 	}
 	else if (choice==8)
 	{
-		system("CLS");
 		leave_flag = true;
 		return true;
 	}
@@ -280,6 +283,17 @@ bool promptAdminOption(HashMap* myTable)
 	}
 	else if (choice==0)
 	{
+		system("cls");
+		cout << "P-kin.io, copyright 2015 by PumpkinPie.\n\n";
+		cout << "PumpkinPie is: Zachary Prince, Chris Yu,\nCindy Lin, and Dima Konev.\n\n";
+		cout << "Main: Zachary Prince & Cindy Lin\n";
+		cout << "File I/O: Cindy Lin\n";
+		cout << "Hash: Zachary Prince\n";
+		cout << "BST: Chris Yu & Dima Konev\n";
+		cout << "Presentation: Chris Yu & Zachary Prince\n";
+		cout << endl;
+		system("pause");
+		system("cls");
 	}
 
 	}while(leave_flag==false);
@@ -287,29 +301,89 @@ bool promptAdminOption(HashMap* myTable)
 
 }
 
-void promptUserOption(HashMap* myTable)
+void promptUserOption(HashMap* myTable, User& end_user)
 {
 	bool leave_flag=false; // for leaving main menu
 	int choice;
-	system("cls");
 	do{
-	cout << "(1) Inbox" << endl;
+	system("cls");
+	cout << "*********** Logged in as user: " << end_user.get_user() << " ************* " << endl << endl;
+	cout << "(1) Inbox (Not available yet; still in BETA testing)" << endl;
 	cout << "(2) View Profile" << endl;
 	cout << "(3) Edit Profile" << endl;
 	cout << "(4) Logout" << endl;
 	cin >> choice;
 	if (choice==1)
 	{
+		system("cls");
 	}
 	else if(choice==2)
 	{
+		system("cls");
+		cout << end_user << endl << endl;
+		system("pause");
 	}
 	else if(choice==3)
 	{
+		string userName, password, email, name;
+		char pref, sex;
+		int age;
+		system("cls");
+		cout << "Enter in user information below. \n\n";
+		cout << "User Name: ";
+		cin >> userName;
+		cout << "Real Name: ";
+		cin.ignore();
+		getline(cin,name);
+		cout << "Password: ";
+		cin >> password;
+		cout << "Email: ";
+		cin >> email;
+		cout << "Sexual Preference (One character, M, F, O): ";
+		cin >> pref;
+		cout << "Gender (One character, M, F, O): ";
+		cin >> sex;
+		cout << "Age: ";
+		cin >> age;
+
+		end_user.set_age(age);
+		end_user.set_email(email);
+		end_user.set_name(name);
+		end_user.set_pass(password);
+		end_user.set_pref(pref);
+		end_user.set_sex(sex);
+		end_user.set_user(userName);
+	
+		User *updatedUser;
+		updatedUser = new User(userName,password,email,name,pref,sex,age);
+		myTable->add(*updatedUser);
+		delete updatedUser;
+
+		system("pause");
 	}
 	else if(choice==4)
 	{
-		leave_flag=true;
+		myTable->remove(end_user.get_user());
+		char choice;
+		string savepath;
+		leave_flag = true;
+		system("cls");
+		cout << "Would you like to save your changes to file?\n('Y' for yes; any other key to logout)\n";
+		cin >> choice;
+		if (choice=='Y' || choice=='y')
+		{
+			cout << "Enter below the filepath of the csv that you would like to save changes\n";
+			cout << "to the database to. A listing of your current working directory has been\n";
+			cout << "provided for your convenience.\n\n";
+			system("pause");
+			system("cls");
+			cout << endl;
+			system("dir /w /on");
+
+			cout << "\nFilepath: ";
+			cin >> savepath;
+			writeToFileFromHash(myTable,savepath);
+		}
 	}
 	else
 	{
